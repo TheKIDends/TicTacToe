@@ -4,7 +4,7 @@
 
 - Tác giả: Nguyễn Châu Khanh
 - Mssv: 21020019 
-- K66CCLC - Đại học Công Nghệ - ĐHQGHN
+- K66C CLC - Đại học Công Nghệ - ĐHQGHN
 
 ## IDE/Compiler
 
