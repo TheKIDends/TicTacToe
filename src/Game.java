@@ -14,20 +14,20 @@ enum CellStatus {
 }
 
 public class Game {
-    private static final Board board = new Board();
+    private static Board board = new Board();
 
     /**
      * Constructor.
      */
-    Game() {
-    }
+    Game() {}
 
     /**
      * Game status.
      */
     private static GameStatus gameStatus() {
         for (int i = 0; i < 3; ++i) {
-            if (board.getCell(i, 0) == board.getCell(i, 1) && board.getCell(i, 1) == board.getCell(i, 2)) {
+            if (board.getCell(i, 0) == board.getCell(i, 1) &&
+                    board.getCell(i, 1) == board.getCell(i, 2)) {
                 if (board.getCell(i, 0) == CellStatus.X) {
                     return GameStatus.X_WIN;
                 }
@@ -36,7 +36,8 @@ public class Game {
                 }
             }
 
-            if (board.getCell(0, i) == board.getCell(1, i) && board.getCell(1, i) == board.getCell(2, i)) {
+            if (board.getCell(0, i) == board.getCell(1, i) &&
+                    board.getCell(1, i) == board.getCell(2, i)) {
                 if (board.getCell(0, i) == CellStatus.X) {
                     return GameStatus.X_WIN;
                 }
@@ -46,7 +47,8 @@ public class Game {
             }
         }
 
-        if (board.getCell(0, 0) == board.getCell(1, 1) && board.getCell(1, 1) == board.getCell(2, 2)) {
+        if (board.getCell(0, 0) == board.getCell(1, 1) &&
+                board.getCell(1, 1) == board.getCell(2, 2)) {
             if (board.getCell(1, 1) == CellStatus.X) {
                 return GameStatus.X_WIN;
             }
@@ -55,7 +57,8 @@ public class Game {
             }
         }
 
-        if (board.getCell(0, 2) == board.getCell(1, 1) && board.getCell(1, 1) == board.getCell(2, 0)) {
+        if (board.getCell(0, 2) == board.getCell(1, 1) &&
+                board.getCell(1, 1) == board.getCell(2, 0)) {
             if (board.getCell(1, 1) == CellStatus.X) {
                 return GameStatus.X_WIN;
             }
@@ -99,11 +102,7 @@ public class Game {
         System.out.println("Tic-tac-toe");
         System.out.println("Start game!!!");
         while (gameStatus() == GameStatus.NOT_OVER) {
-            if (turn == CellStatus.X) {
-                System.out.println("X turn");
-            } else {
-                System.out.println("O turn");
-            }
+            System.out.println(turn + " turn");
             while (true) {
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
@@ -111,9 +110,8 @@ public class Game {
                 --y;
                 if (board.tick(x, y, turn)) {
                     break;
-                } else {
-                    System.out.println("Invalid! Try again.");
                 }
+                System.out.println("Invalid! Try again.");
             }
             board.show();
             turn = swapTurn(turn);
